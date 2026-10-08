@@ -1,0 +1,71 @@
+// Here is the position where the digit is located
+let posicao = Number(prompt("Digit position: "))
+
+// Create an empty variable to store the multiples of 7
+let algarismos = "";
+
+// We start with the first multiple of 7
+let numero = 7;
+
+// While we have not yet reached the desired position...
+while (algarismos.length < posicao) {
+
+    // Add the multiple of 7 to the sequence
+    algarismos += numero;
+
+    // Move to the next multiple of 7
+    numero += 7;
+}
+
+// Since positions start at 0 in JavaScript,
+// we use posicao - 1 to find the correct digit
+let resultado = algarismos[posicao - 1];
+
+// Display the result
+console.log("The digit at position", posicao, "is:", resultado);
+
+-------------------------------------------------------------------------------------
+
+// Here is the position where the digit is located
+let posicao = Number(prompt("Digit position: "))
+
+// Up to the number 98, there are 27 digits in the sequence
+// 7 has 1 digit
+// 14 to 98 have 2 digits
+let algarismosAntes = 27;
+
+
+// Checking if the chosen position is before the number 105
+if (posicao <= algarismosAntes) {
+
+    // In this case, the position is among the first multiples
+    console.log("The position is before 105.");
+
+} else {
+
+    // We find out how many digits are missing
+    // after the first 27 digits
+    let faltam = posicao - algarismosAntes;
+
+    // Every number starting from 105 has 3 digits.
+    // Math.floor() finds which multiple of 7 we are on.
+    let numero = 105 + Math.floor((faltam - 1) / 3) * 7;
+
+    // We find out which of the 3 positions in the number we need to take
+    let posicaoNoNumero = (faltam - 1) % 3;
+
+    // Convert the number to text so we can get
+    // only one of its digits
+    let algarismo = String(numero)[posicaoNoNumero];
+
+    // Display the number found
+    console.log("Number:", numero);
+
+    // Display the digit found
+    console.log(
+        "The digit at position",
+        posicao,
+        "is:",
+        algarismo
+    );
+}
